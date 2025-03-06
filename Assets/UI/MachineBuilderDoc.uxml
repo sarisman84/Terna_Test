@@ -1,0 +1,8 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Style/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=3fb1ea764359324438a56a060a2a1bb5&amp;type=3#DefaultStyle" />
+    <engine:VisualElement name="menu_bar" style="flex-grow: 0; height: 4%; flex-direction: row;">
+        <engine:Button text="File" name="file_button" style="width: 50px;" />
+        <engine:Button text="Clear" name="clear_button" style="width: 50px;" />
+    </engine:VisualElement>
+    <engine:VisualElement name="part_picker" style="flex-grow: 0; width: 20%; height: 100%; flex-direction: row; flex-wrap: wrap;" />
+</engine:UXML>
