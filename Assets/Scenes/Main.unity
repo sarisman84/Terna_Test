@@ -1043,6 +1043,46 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5bfcf580af1ab2b47860666bcda45e56, type: 2}
   - {fileID: 11400000, guid: 8378faa696a9262458ec5c5d7a8017ab, type: 2}
   - {fileID: 11400000, guid: 36ad6d00029126041a6fb545884edca2, type: 2}
+  rotationInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Rotation Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: bfafa180-c65e-4dda-89f4-bd5e617fe9e8
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: db82c130-8214-4e0c-a422-df7d1aa26e0f
+        m_Path: <Mouse>/delta
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Rotation Input
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  holdInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Hold Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: d7a764ed-3320-4b3a-9ef1-07d650ca86cc
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: e91b11e4-ae40-4c7d-a7fd-1a670710a330
+        m_Path: <Mouse>/leftButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Hold Input
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
 --- !u!114 &1843972472
 MonoBehaviour:
   m_ObjectHideFlags: 0
