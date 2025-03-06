@@ -17,8 +17,8 @@ namespace Terna.UI
 			this.text = "";
 			this.style.backgroundImage = Background.FromTexture2D(machinePart.GetPartPreviewTexture());
 			this.tooltip = machinePart.GetPartPrefab().name;
-			this.style.width = 100;
-			this.style.height = 100;
+			this.style.width = 75;
+			this.style.height = 75;
 		}
 
 		private void OnClick()
