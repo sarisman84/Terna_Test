@@ -12,3 +12,15 @@ VisualElement {
     margin-right: -10px;
     margin-left: -5px;
 }
+
+.unity-label {
+    background-color: rgba(0, 0, 0, 0.46);
+    color: rgb(255, 255, 255);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    min-height: 50px;
+    min-width: 50px;
+    -unity-text-align: middle-center;
+}

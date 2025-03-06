@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 319512f188fa23043bdcd98310085173, type: 3}
-  m_Name: Boom Part B
+  m_Name: Cabin Yellow
   m_EditorClassIdentifier: 
-  partPrefab: {fileID: 6884567174476944159, guid: 4953939a9c3304756b88b9c5714da726, type: 3}
+  partPrefab: {fileID: 2863458202234720762, guid: e8d5eb1e8402d45babdfd8d08d789e06, type: 3}
+  partType: 4

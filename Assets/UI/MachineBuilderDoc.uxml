@@ -4,5 +4,8 @@
         <engine:Button text="File" name="file_button" style="width: 50px;" />
         <engine:Button text="Clear" name="clear_button" style="width: 50px;" />
     </engine:VisualElement>
-    <engine:VisualElement name="part_picker" style="flex-grow: 0; width: 20%; height: 100%; flex-direction: row; flex-wrap: wrap;" />
+    <engine:VisualElement style="flex-grow: 1; flex-direction: row; min-height: auto; background-color: rgba(0, 0, 0, 0); align-content: stretch; justify-content: space-between; align-items: flex-end;">
+        <engine:VisualElement name="part_picker" style="flex-grow: 0; width: 20%; height: 100%; flex-direction: row; flex-wrap: wrap;" />
+        <engine:Label text="Label" name="selected_machine_part" style="position: relative; top: auto; left: auto; right: auto; bottom: auto; width: 75px; -unity-text-align: middle-center; white-space: pre-wrap; flex-shrink: 0; flex-grow: 0; height: 75px; min-width: 75px; min-height: 75px; align-self: flex-start; align-content: auto; justify-content: flex-start;" />
+    </engine:VisualElement>
 </engine:UXML>

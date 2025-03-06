@@ -194,6 +194,115 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8576256164000747613, guid: c92f1bc022b924a0eaeba26f4b291724, type: 3}
   m_PrefabInstance: {fileID: 69425376}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &77143232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 77143234}
+  - component: {fileID: 77143233}
+  m_Layer: 0
+  m_Name: CameraOrbitController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &77143233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77143232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7acb67f70b34944ada90d69bb6b889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraSpeed: 5
+  zoomSpeed: 2
+  minZoom: 5
+  maxZoom: 20
+  panSpeed: 20
+  panInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Pan Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 631b1bb6-5eec-4c3e-90d4-24258dc425f8
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: f6f8ffdf-a2bd-437c-b9b0-8ce4135d999d
+        m_Path: <Mouse>/position
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Pan Input
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  holdInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Hold Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 0f38369e-1528-457b-96a1-c5fb79203c64
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 79df880d-3074-4d75-9b32-8b141da0fa09
+        m_Path: <Mouse>/rightButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Hold Input
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  zoomInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Zoom Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 2dbebd46-b18a-43c4-b108-2058b31681f2
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: e87a650d-5648-4a7e-84ea-7d5882a90fac
+        m_Path: <Mouse>/scroll
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Zoom Input
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+--- !u!4 &77143234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77143232}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &146016495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1751559065555086910, guid: 1c40d62ea2f954eea9deae1c886fa78e, type: 3}
@@ -1043,46 +1152,57 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5bfcf580af1ab2b47860666bcda45e56, type: 2}
   - {fileID: 11400000, guid: 8378faa696a9262458ec5c5d7a8017ab, type: 2}
   - {fileID: 11400000, guid: 36ad6d00029126041a6fb545884edca2, type: 2}
-  rotationInput:
+  - {fileID: 11400000, guid: b2e6c569d473c504ea346acf049333df, type: 2}
+  - {fileID: 11400000, guid: 432f4e251b2ddc144aef958bb1b5a8c0, type: 2}
+  - {fileID: 11400000, guid: f7c49c1f2716c4540837db77b35f0b63, type: 2}
+  - {fileID: 11400000, guid: a80a04280408f52469558502992335bf, type: 2}
+  - {fileID: 11400000, guid: 9a2b1643ac88186499efc98f76e2d42a, type: 2}
+  - {fileID: 11400000, guid: 8b7fd7af369b1ee4580912d74f0a5080, type: 2}
+  - {fileID: 11400000, guid: 272ec8050dcac454681c11839e7114cf, type: 2}
+  - {fileID: 11400000, guid: c1b69bf3ff3f9474d9a3fc360f3080da, type: 2}
+  - {fileID: 11400000, guid: 0e9cbb60a7c25bc45ae88a93dd2f19fa, type: 2}
+  - {fileID: 11400000, guid: a5a6ac186bf54e64c9db772c07ecb7fb, type: 2}
+  mouseInput:
     m_UseReference: 0
     m_Action:
-      m_Name: Rotation Input
+      m_Name: Mouse Input
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: bfafa180-c65e-4dda-89f4-bd5e617fe9e8
+      m_Id: 68b8a04a-825c-4c8c-ba1a-6e0326261d73
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: db82c130-8214-4e0c-a422-df7d1aa26e0f
-        m_Path: <Mouse>/delta
+        m_Id: b335d528-6fbb-41e5-8b1e-60b80156940c
+        m_Path: <Mouse>/position
         m_Interactions: 
         m_Processors: 
         m_Groups: 
-        m_Action: Rotation Input
+        m_Action: Mouse Input
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
-  holdInput:
+  selectInput:
     m_UseReference: 0
     m_Action:
-      m_Name: Hold Input
+      m_Name: Select Input
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: d7a764ed-3320-4b3a-9ef1-07d650ca86cc
+      m_Id: a920c0ee-3b3a-465d-b259-28508274ce9b
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: e91b11e4-ae40-4c7d-a7fd-1a670710a330
+        m_Id: 02d864ed-0bca-43e0-89be-55105381ba47
         m_Path: <Mouse>/leftButton
         m_Interactions: 
         m_Processors: 
         m_Groups: 
-        m_Action: Hold Input
+        m_Action: Select Input
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
+  cameraOrbitController: {fileID: 77143233}
 --- !u!114 &1843972472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1597,3 +1717,4 @@ SceneRoots:
   - {fileID: 1785293081}
   - {fileID: 493686551}
   - {fileID: 1843972470}
+  - {fileID: 77143234}

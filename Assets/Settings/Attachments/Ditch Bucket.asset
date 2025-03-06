@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 319512f188fa23043bdcd98310085173, type: 3}
-  m_Name: Boom Part C
+  m_Name: Ditch Bucket
   m_EditorClassIdentifier: 
-  partPrefab: {fileID: 6884567174476944159, guid: 8b5bbd4a590d44624987c6d16442899f, type: 3}
+  partPrefab: {fileID: 4824710661094926067, guid: 09e5fa06899584a6d89069a7d7f9285c, type: 3}
+  partType: 2
