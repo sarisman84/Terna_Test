@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 8585226563205234190}
   m_Layer: 0
   m_Name: AttachmentPoint
-  m_TagString: Untagged
+  m_TagString: AnchorPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

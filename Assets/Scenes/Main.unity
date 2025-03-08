@@ -223,11 +223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7acb67f70b34944ada90d69bb6b889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 5
   zoomSpeed: 2
   minZoom: 5
   maxZoom: 20
-  panSpeed: 20
   panInput:
     m_UseReference: 0
     m_Action:
@@ -1202,7 +1200,29 @@ MonoBehaviour:
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
+  deleteInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Delete Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 733a117d-6001-4605-bb76-736e8f9b2570
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: cf360c99-b362-42eb-9e5e-c0ae007fe9e6
+        m_Path: <Keyboard>/delete
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Delete Input
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   cameraOrbitController: {fileID: 77143233}
+  anchorIndicatorPrefab: {fileID: 101029509313345327, guid: 3882431d7de1c4841bb304e6db194996, type: 3}
+  selectIndicatorPrefab: {fileID: 7038656317147195990, guid: 116e7bc4c6d61164185db4a5204e0eb0, type: 3}
 --- !u!114 &1843972472
 MonoBehaviour:
   m_ObjectHideFlags: 0
