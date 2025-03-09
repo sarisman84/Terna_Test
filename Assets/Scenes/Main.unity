@@ -391,7 +391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &493686551
 Transform:
   m_ObjectHideFlags: 0
@@ -1079,7 +1079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1785293081
 Transform:
   m_ObjectHideFlags: 0
@@ -1112,6 +1112,7 @@ GameObject:
   - component: {fileID: 1843972470}
   - component: {fileID: 1843972472}
   - component: {fileID: 1843972471}
+  - component: {fileID: 1843972473}
   m_Layer: 0
   m_Name: MachineBuilder
   m_TagString: Untagged
@@ -1221,8 +1222,9 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   cameraOrbitController: {fileID: 77143233}
-  anchorIndicatorPrefab: {fileID: 101029509313345327, guid: 3882431d7de1c4841bb304e6db194996, type: 3}
+  anchorIndicatorPrefab: {fileID: 1631502795376756670, guid: 3882431d7de1c4841bb304e6db194996, type: 3}
   selectIndicatorPrefab: {fileID: 7038656317147195990, guid: 116e7bc4c6d61164185db4a5204e0eb0, type: 3}
+  anchorHitboxSize: 1.15
 --- !u!114 &1843972472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1242,6 +1244,18 @@ MonoBehaviour:
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
   m_WorldSpaceHeight: 1080
+--- !u!114 &1843972473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843972469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c33b344d6f55842859fd657879961e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1897303294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1397,7 +1411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2030967520
 Transform:
   m_ObjectHideFlags: 0

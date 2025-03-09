@@ -5,6 +5,7 @@ using UnityEditor.UIElements;
 using Terna;
 using UnityEditor.VersionControl;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(MachinePart))]
 public class MachinePartEditor : Editor
 {

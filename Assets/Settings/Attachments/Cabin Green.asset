@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Cabin Green
   m_EditorClassIdentifier: 
   partPrefab: {fileID: 2863458202234720762, guid: 1c40d62ea2f954eea9deae1c886fa78e, type: 3}
-  partType: 4
+  partType: 16

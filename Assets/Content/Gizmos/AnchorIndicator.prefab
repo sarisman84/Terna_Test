@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1575255832988868474}
-  - component: {fileID: 101029509313345327}
-  m_Layer: 6
+  - component: {fileID: 1631502795376756670}
+  m_Layer: 3
   m_Name: AnchorIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 3628480400113192740}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &101029509313345327
+--- !u!114 &1631502795376756670
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,9 +42,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1501638075582197166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18437d925461d064396b9656c2029929, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bffaee3ea80a0e43a5cb1fc32cd65b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedMaterial: {fileID: 2100000, guid: 5c5dbcbc22fdad24eb67db1783578f82, type: 2}
+  hoverMaterial: {fileID: 2100000, guid: eebb38a9e61b51b47b17cb122dec93ae, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: e1c0c65b58f035744947646c59c919c0, type: 2}
+  defaultLayer: 3
+  hoverLayer: 7
+  selectLayer: 6
+  currentState: 0
+  oldState: 0
 --- !u!1 &7878098790316153496
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,7 +64,7 @@ GameObject:
   - component: {fileID: 3628480400113192740}
   - component: {fileID: 4837661082145681337}
   - component: {fileID: 7792584435393003278}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +81,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1575255832988868474}

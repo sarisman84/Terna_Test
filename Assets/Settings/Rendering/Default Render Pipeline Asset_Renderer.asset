@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8976313773952678815
+--- !u!114 &-8549199665220071422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
-  m_Name: Gizmos  Under
+  m_Name: GizmosDefault
   m_EditorClassIdentifier: 
   m_Active: 1
   settings:
-    passTag: Gizmos  Under
+    passTag: GizmosDefault
     Event: 300
     filterSettings:
-      RenderQueueType: 0
+      RenderQueueType: 1
       LayerMask:
         serializedVersion: 2
         m_Bits: 8
       PassNames: []
-    overrideMaterial: {fileID: 2100000, guid: 1ce8222d946914647ad38df2f4f3abcf, type: 2}
+    overrideMaterial: {fileID: 2100000, guid: e1c0c65b58f035744947646c59c919c0, type: 2}
     overrideMaterialPassIndex: 0
     overrideShader: {fileID: 0}
     overrideShaderPassIndex: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
       restoreCamera: 1
       offset: {x: 0, y: 0, z: 0, w: 0}
       cameraFieldOfView: 60
---- !u!114 &-8549199665220071422
+--- !u!114 &-8035522923610002323
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -52,19 +52,61 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
-  m_Name: Gizmos
+  m_Name: GizmosHoveredTransparent
   m_EditorClassIdentifier: 
   m_Active: 1
   settings:
-    passTag: Gizmos
+    passTag: GizmosHoveredTransparent
     Event: 300
     filterSettings:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 64
+        m_Bits: 1024
       PassNames: []
-    overrideMaterial: {fileID: 2100000, guid: e1c0c65b58f035744947646c59c919c0, type: 2}
+    overrideMaterial: {fileID: 2100000, guid: badbe9e59c0d1274d9bdb993512a0b78, type: 2}
+    overrideMaterialPassIndex: 0
+    overrideShader: {fileID: 0}
+    overrideShaderPassIndex: 0
+    overrideMode: 1
+    overrideDepthState: 1
+    depthCompareFunction: 5
+    enableWrite: 0
+    stencilSettings:
+      overrideStencilState: 0
+      stencilReference: 0
+      stencilCompareFunction: 8
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
+--- !u!114 &-2598695324148707173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: GizmosHovered
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    passTag: GizmosHovered
+    Event: 300
+    filterSettings:
+      RenderQueueType: 1
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 128
+      PassNames: []
+    overrideMaterial: {fileID: 2100000, guid: eebb38a9e61b51b47b17cb122dec93ae, type: 2}
     overrideMaterialPassIndex: 0
     overrideShader: {fileID: 0}
     overrideShaderPassIndex: 0
@@ -110,8 +152,12 @@ MonoBehaviour:
     probeVolumeBlendStatesCS: {fileID: 0}
   m_RendererFeatures:
   - {fileID: -8549199665220071422}
-  - {fileID: -8976313773952678815}
-  m_RendererFeatureMap: 0250ab3833245b8961c41a5f2eba6d83
+  - {fileID: 4349311826265428480}
+  - {fileID: -2598695324148707173}
+  - {fileID: 6071164316542192108}
+  - {fileID: 4980731224048626958}
+  - {fileID: -8035522923610002323}
+  m_RendererFeatureMap: 0250ab3833245b8900d2f4f50fdc5b3c9bd0a5045f94efdbec49868cc71b41540e6d1dc3a81c1f456dacb79979167c90
   m_UseNativeRenderPass: 0
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -137,3 +183,129 @@ MonoBehaviour:
   m_DepthTextureFormat: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 1
+--- !u!114 &4349311826265428480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: GizmosSelected
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    passTag: GizmosSelected
+    Event: 300
+    filterSettings:
+      RenderQueueType: 1
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 64
+      PassNames: []
+    overrideMaterial: {fileID: 2100000, guid: 5c5dbcbc22fdad24eb67db1783578f82, type: 2}
+    overrideMaterialPassIndex: 0
+    overrideShader: {fileID: 0}
+    overrideShaderPassIndex: 0
+    overrideMode: 1
+    overrideDepthState: 1
+    depthCompareFunction: 5
+    enableWrite: 0
+    stencilSettings:
+      overrideStencilState: 0
+      stencilReference: 0
+      stencilCompareFunction: 8
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
+--- !u!114 &4980731224048626958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: GizmosSelectedTransparent
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    passTag: GizmosSelectedTransparent
+    Event: 300
+    filterSettings:
+      RenderQueueType: 1
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 512
+      PassNames: []
+    overrideMaterial: {fileID: 2100000, guid: 0388f8734faf43144a50375f3041c9c5, type: 2}
+    overrideMaterialPassIndex: 0
+    overrideShader: {fileID: 0}
+    overrideShaderPassIndex: 0
+    overrideMode: 1
+    overrideDepthState: 1
+    depthCompareFunction: 5
+    enableWrite: 0
+    stencilSettings:
+      overrideStencilState: 0
+      stencilReference: 0
+      stencilCompareFunction: 8
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
+--- !u!114 &6071164316542192108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: GizmosDefaultTransparent
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    passTag: GizmosDefaultTransparent
+    Event: 300
+    filterSettings:
+      RenderQueueType: 1
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 256
+      PassNames: []
+    overrideMaterial: {fileID: 2100000, guid: 1ce8222d946914647ad38df2f4f3abcf, type: 2}
+    overrideMaterialPassIndex: 0
+    overrideShader: {fileID: 0}
+    overrideShaderPassIndex: 0
+    overrideMode: 1
+    overrideDepthState: 1
+    depthCompareFunction: 5
+    enableWrite: 0
+    stencilSettings:
+      overrideStencilState: 0
+      stencilReference: 0
+      stencilCompareFunction: 8
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60

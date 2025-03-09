@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Cabin Black
   m_EditorClassIdentifier: 
   partPrefab: {fileID: 2863458202234720762, guid: 010d618dcd361480aae6e3988477f0c0, type: 3}
-  partType: 4
+  partType: 16

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Stick Green
   m_EditorClassIdentifier: 
   partPrefab: {fileID: 609214866204375743, guid: a7d09b8e4dbaf44879a912857d503a9b, type: 3}
-  partType: 1
+  partType: 2
+  rotationOffset: {x: 110, y: 0, z: 0}

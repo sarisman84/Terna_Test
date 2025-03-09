@@ -9,14 +9,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Gizmos - Under
+  - Gizmos_Default
   - Water
   - UI
-  - Gizmos
-  - 
-  - 
-  - 
-  - 
+  - Gizmos_Selected
+  - Gizmos_Hovered
+  - Gizmos_Default_Transparent
+  - Gizmos_Selected_Transparent
+  - Gizmos_Hovered_Transparent
   - 
   - 
   - 

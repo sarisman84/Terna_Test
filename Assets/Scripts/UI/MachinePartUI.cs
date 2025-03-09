@@ -22,6 +22,12 @@ namespace Terna.UI
 			this.style.width = 75;
 			this.style.height = 75;
 
+
+			this.style.marginBottom = 2;
+			this.style.marginLeft = 2;
+			this.style.marginRight = 2;
+			this.style.marginTop = 2;
+
 			this.RegisterCallback<MouseEnterEvent>(evt =>
 			{
 				machineBuilder.SetInputActive(false);

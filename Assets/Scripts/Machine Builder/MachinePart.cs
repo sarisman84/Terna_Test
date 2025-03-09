@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -9,17 +11,44 @@ namespace Terna
 	{
 		public enum PartType
 		{
-			Boom,
-			Arm,
-			Bucket,
-			Wheels,
-			Cabin,
+			None = 0,
+			Boom = 1 << 0,
+			Arm = 1 << 1,
+			Bucket = 1 << 2,
+			Wheels = 1 << 3,
+			Cabin = 1 << 4,
+			Count = 5
 		}
 		[SerializeField] private GameObject partPrefab;
 		[SerializeField] private PartType partType;
+		[SerializeField] private Vector3 rotationOffset;
 
 		public GameObject GetPartPrefab() => partPrefab;
 		public PartType GetPartType() => partType;
+		public bool HasAnchor() => GetAnchor(partPrefab.transform) != null;
+		public Quaternion GetRotationOffset(List<AssembledMachinePart> assembledMachineParts)
+		{
+			Vector3 targetRot = rotationOffset;
+			if (assembledMachineParts.FindAll(part => part.type == PartType.Boom).Count >= 1 && partType == PartType.Boom)
+			{
+				targetRot.x *= -1;
+			}
+
+			return Quaternion.Euler(targetRot);
+		}
+
+		public static Transform GetAnchor(Transform root)
+		{
+			for (int i = 0; i < root.childCount; i++)
+			{
+				if (root.GetChild(i).CompareTag("AnchorPoint"))
+				{
+					return root.GetChild(i);
+				}
+			}
+			return null;
+
+		}
 
 		public Texture2D GetPartPreviewTexture()
 		{

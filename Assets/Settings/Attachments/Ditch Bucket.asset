@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Ditch Bucket
   m_EditorClassIdentifier: 
   partPrefab: {fileID: 4824710661094926067, guid: 09e5fa06899584a6d89069a7d7f9285c, type: 3}
-  partType: 2
+  partType: 4
+  rotationOffset: {x: 110, y: 0, z: 0}

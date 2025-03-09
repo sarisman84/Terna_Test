@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Boom Black
   m_EditorClassIdentifier: 
   partPrefab: {fileID: 6884567174476944159, guid: d7b1dd5bbd2c944189267889975e8e48, type: 3}
+  partType: 1
+  rotationOffset: {x: -43, y: 0, z: 0}

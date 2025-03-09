@@ -131,3 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bffaee3ea80a0e43a5cb1fc32cd65b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedMaterial: {fileID: 2100000, guid: 0388f8734faf43144a50375f3041c9c5, type: 2}
+  hoverMaterial: {fileID: 2100000, guid: badbe9e59c0d1274d9bdb993512a0b78, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: 1ce8222d946914647ad38df2f4f3abcf, type: 2}
+  defaultLayer: 8
+  hoverLayer: 10
+  selectLayer: 9
+  currentState: 0
+  oldState: 0

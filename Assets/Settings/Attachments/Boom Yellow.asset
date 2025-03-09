@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Boom Yellow
   m_EditorClassIdentifier: 
   partPrefab: {fileID: 6884567174476944159, guid: 8b5bbd4a590d44624987c6d16442899f, type: 3}
+  partType: 1
+  rotationOffset: {x: -43, y: 0, z: 0}

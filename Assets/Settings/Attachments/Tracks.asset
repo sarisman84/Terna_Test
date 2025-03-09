@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Tracks
   m_EditorClassIdentifier: 
   partPrefab: {fileID: 3534095420628935563, guid: 1be2428b2cf744cf8a4768516543829c, type: 3}
-  partType: 3
+  partType: 8

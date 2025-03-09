@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Wheels
   m_EditorClassIdentifier: 
   partPrefab: {fileID: 3534095420628935563, guid: 2e85782f2cc424999a55111b7679d100, type: 3}
-  partType: 3
+  partType: 8

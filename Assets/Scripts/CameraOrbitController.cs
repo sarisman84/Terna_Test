@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,6 +26,10 @@ namespace Terna
 		private bool IsHoldInputHeld() => holdInput.action.ReadValue<float>() > 0;
 		private Vector3 GetViewportPointFromPanInput() => cam.ScreenToViewportPoint(panInput.action.ReadValue<Vector2>());
 		private float GetZoomInputValue() => zoomInput.action.ReadValue<Vector2>().y;
+
+		public string GetPanKey() => holdInput.action.GetBindingDisplayString(0);
+
+		public string GetZoomKey() => zoomInput.action.GetBindingDisplayString(0);
 
 		private void Awake()
 		{
@@ -84,5 +89,7 @@ namespace Terna
 		{
 			targetFocus = targetPosition;
 		}
+
+
 	}
 }

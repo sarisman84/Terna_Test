@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Stick Black
   m_EditorClassIdentifier: 
   partPrefab: {fileID: 609214866204375743, guid: ea250c03ab4e84cc9bfc0e1985d7683c, type: 3}
-  partType: 1
+  partType: 2
+  rotationOffset: {x: 110, y: 0, z: 0}

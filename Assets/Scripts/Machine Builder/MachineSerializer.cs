@@ -60,7 +60,7 @@ namespace Terna.Serializer
 			List<SerializedMachinePart> assembledMachineParts = JsonConvert.DeserializeObject<List<SerializedMachinePart>>(data);
 
 			// Get the machine parts
-			builder.BuildAssembly(assembledMachineParts);
+			builder.StartCoroutine(builder.BuildAssemblyInCoroutine(assembledMachineParts));
 		}
 	}
 }
