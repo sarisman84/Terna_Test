@@ -7,8 +7,9 @@ namespace Terna.UI
 	{
 		private int machinePart;
 		private MachineBuilder machineBuilder;
+		private Color originalColor;
 
-		public MachinePartUI(int machinePart, MachineBuilder machineBuilder)
+		public MachinePartUI(int machinePart, MachineBuilder machineBuilder, MachineBuilderUI machineBuilderUI)
 		{
 			this.machinePart = machinePart;
 			this.machineBuilder = machineBuilder;
@@ -28,15 +29,20 @@ namespace Terna.UI
 			this.style.marginRight = 2;
 			this.style.marginTop = 2;
 
+			originalColor = this.style.backgroundColor.value;
+
 			this.RegisterCallback<MouseEnterEvent>(evt =>
 			{
+				this.style.backgroundColor = Color.white;
 				machineBuilder.SetInputActive(false);
 			});
 
 			this.RegisterCallback<MouseLeaveEvent>(evt =>
 			{
+				this.style.backgroundColor = originalColor;
 				machineBuilder.SetInputActive(true);
 			});
+
 		}
 
 		private void OnClick()

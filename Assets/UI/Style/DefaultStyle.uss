@@ -9,8 +9,8 @@ VisualElement {
     border-right-color: rgba(0, 0, 0, 0);
     border-top-color: rgba(0, 0, 0, 0);
     border-bottom-color: rgba(0, 0, 0, 0);
-    margin-right: -11px;
-    margin-left: 1px;
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .unity-label {
@@ -23,4 +23,8 @@ VisualElement {
     min-height: 50px;
     min-width: 50px;
     -unity-text-align: middle-center;
+}
+
+.unity-button:hover {
+    background-color: rgba(168, 168, 168, 0.65);
 }

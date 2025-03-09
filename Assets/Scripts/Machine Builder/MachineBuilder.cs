@@ -331,7 +331,7 @@ namespace Terna
             AssembledMachinePart assemblyPart = new AssembledMachinePart();
             Transform point = IsRootAnchor(holderIndex) ? transform : assembledMachineParts[holderIndex].anchorPoint;
 
-            GameObject instancedPart = Instantiate(partDesc.GetPartPrefab(), point.position, partDesc.GetRotationOffset(assembledMachineParts) * point.rotation, point);
+            GameObject instancedPart = Instantiate(partDesc.GetPartPrefab(), point.position, partDesc.GetRotationOffset(assembledMachineParts, assembledMachineParts.Count) * point.rotation, point);
 
             assemblyPart.part = instancedPart;
             assemblyPart.anchorPoint = MachinePart.GetAnchor(instancedPart.transform);
@@ -428,8 +428,9 @@ namespace Terna
         {
             MachinePart partDesc = newPartDesc ?? machineParts[assembledPart.machinePartIndex];
             Transform anchorPoint = HasParent(assembledPart) ? assembledMachineParts[assembledPart.parentIndex].anchorPoint : transform;
-
-            assembledPart.part = Instantiate(partDesc.GetPartPrefab(), anchorPoint.position, partDesc.GetRotationOffset(assembledMachineParts) * anchorPoint.rotation, anchorPoint);
+            AssembledMachinePart targetPart = HasParent(assembledPart) ? assembledMachineParts[assembledPart.parentIndex] : assembledPart;
+            int targetIndex = assembledPart.index + (machineParts[targetPart.machinePartIndex].GetPartType() == MachinePart.PartType.Boom ? 1 : -1);
+            assembledPart.part = Instantiate(partDesc.GetPartPrefab(), anchorPoint.position, partDesc.GetRotationOffset(assembledMachineParts, targetIndex) * anchorPoint.rotation, anchorPoint);
             assembledPart.machinePartIndex = Array.FindIndex(machineParts, (part) => part == partDesc);
             assembledPart.anchorPoint = MachinePart.GetAnchor(assembledPart.part.transform);
 

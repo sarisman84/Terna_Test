@@ -26,13 +26,20 @@ namespace Terna
 		public GameObject GetPartPrefab() => partPrefab;
 		public PartType GetPartType() => partType;
 		public bool HasAnchor() => GetAnchor(partPrefab.transform) != null;
-		public Quaternion GetRotationOffset(List<AssembledMachinePart> assembledMachineParts)
+		public Quaternion GetRotationOffset(List<AssembledMachinePart> assembledMachineParts, int index)
 		{
 			Vector3 targetRot = rotationOffset;
-			if (assembledMachineParts.FindAll(part => part.type == PartType.Boom).Count >= 1 && partType == PartType.Boom)
+			if (partType == PartType.Boom)
 			{
-				targetRot.x *= -1;
+				// Find all the booms in the assembled machine parts
+				List<AssembledMachinePart> booms = assembledMachineParts.FindAll(part => part.type == PartType.Boom);
+				// If there is more than one boom and the current index is not the first found boom, flip the rotation offset
+				if (IsInputedBoomFirst(booms, index))
+				{
+					targetRot.x *= -1;
+				}
 			}
+
 
 			return Quaternion.Euler(targetRot);
 		}
@@ -48,6 +55,18 @@ namespace Terna
 			}
 			return null;
 
+		}
+
+		private bool IsInputedBoomFirst(List<AssembledMachinePart> booms, int index)
+		{
+			for (int i = 0; i < booms.Count; i++)
+			{
+				if (booms[i].index < index)
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		public Texture2D GetPartPreviewTexture()

@@ -31,6 +31,8 @@ namespace Terna.UI
 		private VisualElement root;
 		#endregion
 
+		public VisualElement GetRoot() => root;
+
 		private const string extension = "assembly";
 		public MachineBuilderUI(MachineBuilder builder, VisualElement root)
 		{
@@ -93,7 +95,7 @@ namespace Terna.UI
 			partPickerElement.Clear();
 			for (int i = 0; i < partsToDisplay.Length; i++)
 			{
-				partPickerElement.Add(new MachinePartUI(partsToDisplay[i], builder));
+				partPickerElement.Add(new MachinePartUI(partsToDisplay[i], builder, this));
 			}
 		}
 
