@@ -6,29 +6,34 @@ using System;
 using Terna.UI;
 using Terna.Gizmos;
 using Terna.Serializer;
-using System.Linq;
-using UnityEngine.AI;
 using System.Collections;
-using UnityEditor.Rendering;
 
 
 namespace Terna
 {
+    /// <summary>
+    /// A class that represents an assembled machine part
+    /// </summary>
     public class AssembledMachinePart
     {
+        // The part object
         public GameObject part;
         public Transform anchorPoint;
+
+        // The bounds of the part
         public Bounds anchorPointBounds;
         public Bounds bounds;
+
+        // The type of the part
         public MachinePart.PartType type;
 
-
+        // The indexes of the part
         public int machinePartIndex;
         public int parentIndex;
         public int childIndex;
         public int index;
 
-
+        // The Gizmos indicators of the part
         public Selectable anchorIndicator;
         public Selectable selectIndicator;
     }
@@ -36,6 +41,7 @@ namespace Terna
     [RequireComponent(typeof(UIDocument), typeof(MachineBuilderVisualiser))]
     public class MachineBuilder : MonoBehaviour
     {
+        #region Serialized Fields
         [SerializeField] private MachinePart[] machineParts;
         [Header("Input Actions")]
         [SerializeField] private InputActionProperty mouseInput;
@@ -48,23 +54,31 @@ namespace Terna
         [SerializeField] private Selectable anchorIndicatorPrefab;
         [SerializeField] private Selectable selectIndicatorPrefab;
         [SerializeField] private float anchorHitboxSize = 1.5f;
-
+        [Header("Editor Debug")]
+        [SerializeField] private bool showDebugGizmos = true;
+        #endregion
+        #region  Components and Systems
         private UIDocument uiDocument;
         private VisualElement rootUI;
         private MachineBuilderUI machinePartPicker;
         private MachineSerializer machineSerializer;
         private MachineBuilderVisualiser visualiser;
         private Camera cam;
+        #endregion
 
+        #region Temporary Variables
         private int selectedAssembledPartIndex = -1;
-
         private int hoveredAssembledPartIndex = -1;
         private bool selectedAnchorPointFlag = true;
-
         public event Action updateEvent;
+        #endregion
+
+
 
 
         private List<AssembledMachinePart> assembledMachineParts = new List<AssembledMachinePart>();
+
+        #region Core Methods
 
         private void Awake()
         {
@@ -128,36 +142,47 @@ namespace Terna
             }
         }
 
+        #endregion
 
+        #region Selection Methods
         public MachinePart.PartType SelectPartType()
         {
+            // If there are no assembled machine parts or the selected part index is invalid, only allow the selection of wheels
             if (assembledMachineParts.Count == 0 || selectedAssembledPartIndex == -1)
             {
                 return MachinePart.PartType.Wheels;
             }
 
+            // Get the selected part
             AssembledMachinePart selectedPart = assembledMachineParts[selectedAssembledPartIndex];
-            // The mask for the arm parts (arm + boom)
-            MachinePart.PartType armMask = MachinePart.PartType.Arm | MachinePart.PartType.Boom | MachinePart.PartType.Bucket;
 
+            // Define the limb mask
+            MachinePart.PartType limbMask = MachinePart.PartType.Arm | MachinePart.PartType.Boom | MachinePart.PartType.Bucket;
 
+            // If the selected part is of type wheels, only allow the selection of a cabin or a limb
             if (selectedPart.type == MachinePart.PartType.Wheels)
             {
                 MachinePart.PartType resultMask = MachinePart.PartType.Wheels;
+                // If the selected part is an anchor point, only allow the selection of a cabin and the limb mask parts as well as exclude the bucket, wheels and arm
                 if (selectedAnchorPointFlag)
                 {
-                    resultMask |= MachinePart.PartType.Cabin | armMask;
+                    resultMask |= MachinePart.PartType.Cabin | limbMask;
+
                     resultMask &= ~MachinePart.PartType.Bucket;
                     resultMask &= ~MachinePart.PartType.Wheels;
+                    resultMask &= ~MachinePart.PartType.Arm;
                 }
                 return resultMask;
             }
 
-
+            // If the selected part is a cabin, only allow the selection of an arm
             if ((selectedPart.type & MachinePart.PartType.Cabin) != 0)
             {
-                MachinePart.PartType resultMask = MachinePart.PartType.Cabin | armMask;
+                // Allow the selection of the limb parts and the cabin part
+                MachinePart.PartType resultMask = MachinePart.PartType.Cabin | limbMask;
+                // Exclude bucket
                 resultMask &= ~MachinePart.PartType.Bucket;
+                // Exclude the cabin if the selected part is an anchor point
                 if (selectedAnchorPointFlag)
                 {
                     resultMask &= ~MachinePart.PartType.Cabin;
@@ -166,14 +191,22 @@ namespace Terna
                 return resultMask;
             }
 
-            if ((selectedPart.type & armMask) != 0)
+            // If the selected part is a limb, only allow the selection of another limb
+            if ((selectedPart.type & limbMask) != 0)
             {
-                return armMask;
+                return limbMask;
             }
 
             return MachinePart.PartType.None;
         }
 
+        /// <summary>
+        /// Get the indexes of the machine parts that match the selected part mask
+        /// </summary>
+        /// <param name="selectedPartMask">A Part Mask</param>
+        /// <returns>
+        /// An array of indexes of the machine parts that match the selected part mask
+        /// </returns>
         private int[] GetMachinePartSelectionOfType(MachinePart.PartType selectedPartMask)
         {
             List<int> selectedParts = new List<int>();
@@ -187,32 +220,43 @@ namespace Terna
 
             return selectedParts.ToArray();
         }
+        #endregion
 
+        #region Getters
         public int GetSelectedAssembledPartIndex() => selectedAssembledPartIndex;
         public MachinePart GetMachinePart(int machinePart) => machineParts[machinePart];
         public MachinePart[] GetMachineParts() => machineParts;
-        public bool HasSelectedAnchorPoint() => selectedAnchorPointFlag;
         public List<AssembledMachinePart> GetAssembledMachineParts() => assembledMachineParts;
         public MachineSerializer GetMachineSerializer() => machineSerializer;
+        #endregion
+
+        #region Flag Getters
+        public bool HasSelectedAnchorPoint() => selectedAnchorPointFlag;
         public bool IsIndexValid(int holderIndex) => holderIndex >= 0 && holderIndex < assembledMachineParts.Count;
+        #endregion
 
-
+        #region Input Names
         public string GetSelectKey() => selectInput.action.GetBindingDisplayString(0);
-
         public string GetPanKey() => cameraOrbitController.GetPanKey();
-
         public string GetZoomKey() => cameraOrbitController.GetZoomKey();
         public string GetDeleteKey() => deleteInput.action.GetBindingDisplayString(0);
+        #endregion
 
-
+        #region Input Detection
         private bool HasTriggeredSelectInput() => selectInput.action.ReadValue<float>() > 0 && selectInput.action.triggered;
         private bool HasTriggeredDeleteInput() => deleteInput.action.ReadValue<float>() > 0 && deleteInput.action.triggered;
+        #endregion
+
+        #region Helper Methods
         private bool IsRootAnchor(int parentIndex) => parentIndex < 0 || parentIndex >= assembledMachineParts.Count;
         private bool HasParent(AssembledMachinePart part) => !IsRootAnchor(part.parentIndex);
 
 
 
-
+        /// <summary>
+        /// Set the input actions active or inactive
+        /// </summary>
+        /// <param name="value"></param>
         public void SetInputActive(bool value)
         {
             if (value)
@@ -227,7 +271,12 @@ namespace Terna
             selectInput.action.Disable();
             deleteInput.action.Disable();
         }
+        #endregion
 
+        #region Assembly Methods
+        /// <summary>
+        /// Clear the current assembly
+        /// </summary>
         public void ClearAssembly()
         {
             foreach (var machinePart in assembledMachineParts)
@@ -331,22 +380,27 @@ namespace Terna
             AssembledMachinePart assemblyPart = new AssembledMachinePart();
             Transform point = IsRootAnchor(holderIndex) ? transform : assembledMachineParts[holderIndex].anchorPoint;
 
+            // Instantiate the new part
             GameObject instancedPart = Instantiate(partDesc.GetPartPrefab(), point.position, partDesc.GetRotationOffset(assembledMachineParts, assembledMachineParts.Count) * point.rotation, point);
 
+            // Set the new part properties
             assemblyPart.part = instancedPart;
             assemblyPart.anchorPoint = MachinePart.GetAnchor(instancedPart.transform);
             assemblyPart.bounds = instancedPart.GetComponent<Collider>().bounds;
             assemblyPart.type = partDesc.GetPartType();
 
+            // Set the new part indexes
             assemblyPart.machinePartIndex = newPart;
             assemblyPart.parentIndex = holderIndex;
             assemblyPart.childIndex = -1;
             assemblyPart.machinePartIndex = newPart;
             assemblyPart.index = assembledMachineParts.Count;
 
+            // Set the new part indicators
             assemblyPart.selectIndicator = Instantiate(selectIndicatorPrefab, instancedPart.transform.position, Quaternion.identity, instancedPart.transform);
             assemblyPart.selectIndicator.SetTransform(assemblyPart.bounds.center, assemblyPart.bounds.size);
 
+            // Set the new part anchor point bounds and indicator
             if (assemblyPart.anchorPoint)
             {
                 Vector3 size = CalculateAnchorPointBounds(assemblyPart);
@@ -359,20 +413,17 @@ namespace Terna
                 assemblyPart.anchorIndicator = null;
             }
 
-
-
-
+            // Update the parent index if the new part is not an anchor point    
             if (!IsRootAnchor(holderIndex))
             {
                 assembledMachineParts[holderIndex].childIndex = assembledMachineParts.Count;
             }
 
-
+            // Add the new part to the assembly
             assembledMachineParts.Add(assemblyPart);
 
+            // Update the selection
             UpdateSelection(assembledMachineParts.Count - 1, HasPartAnAnchor(assembledMachineParts[assembledMachineParts.Count - 1].machinePartIndex));
-
-
 
             return assembledMachineParts.Count - 1;
 
@@ -380,11 +431,13 @@ namespace Terna
 
         private bool HasHolderPartAnAssembledChildPart(int holderIndex)
         {
+            // Check if the holder index is valid
             if (!IsIndexValid(holderIndex))
             {
                 return false;
             }
 
+            // Check if the holder part has an assembled child part
             AssembledMachinePart holderPart = assembledMachineParts[holderIndex];
             for (int i = 0; i < assembledMachineParts.Count; i++)
             {
@@ -426,20 +479,27 @@ namespace Terna
         /// <returns> A reassembled machine part </returns>
         private AssembledMachinePart ReassembleMachinePart(AssembledMachinePart assembledPart, MachinePart newPartDesc = null)
         {
+            // Fetch either the new part description or the existing part description
             MachinePart partDesc = newPartDesc ?? machineParts[assembledPart.machinePartIndex];
+
             Transform anchorPoint = HasParent(assembledPart) ? assembledMachineParts[assembledPart.parentIndex].anchorPoint : transform;
+            // Fetch either the parent part or the assembled part
             AssembledMachinePart targetPart = HasParent(assembledPart) ? assembledMachineParts[assembledPart.parentIndex] : assembledPart;
+
+            // Calculate the target index of the new part in the case the target part is a boom
             int targetIndex = assembledPart.index + (machineParts[targetPart.machinePartIndex].GetPartType() == MachinePart.PartType.Boom ? 1 : -1);
+
+            // Create a new assembled part
             assembledPart.part = Instantiate(partDesc.GetPartPrefab(), anchorPoint.position, partDesc.GetRotationOffset(assembledMachineParts, targetIndex) * anchorPoint.rotation, anchorPoint);
             assembledPart.machinePartIndex = Array.FindIndex(machineParts, (part) => part == partDesc);
             assembledPart.anchorPoint = MachinePart.GetAnchor(assembledPart.part.transform);
 
-
+            // Set the select indicator and bounds properties
             assembledPart.bounds = assembledPart.part.GetComponent<Collider>().bounds;
             assembledPart.selectIndicator = Instantiate(selectIndicatorPrefab, assembledPart.part.transform.position, Quaternion.identity, assembledPart.part.transform);
             assembledPart.selectIndicator.SetTransform(assembledPart.bounds.center, assembledPart.bounds.size);
 
-
+            // Set the anchor point bounds and indicator
             if (assembledPart.anchorPoint)
             {
                 Vector3 size = CalculateAnchorPointBounds(assembledPart);
@@ -451,7 +511,6 @@ namespace Terna
                 assembledPart.anchorPointBounds = new Bounds(Vector3.zero, Vector3.zero);
                 assembledPart.anchorIndicator = null;
             }
-
 
             return assembledPart;
         }
@@ -595,11 +654,17 @@ namespace Terna
             machinePartPicker.UpdateSelectedIndicator(assembledMachineParts.Count > 0 ? assembledMachineParts[0].part.name : null);
         }
 
+        #endregion
+
         /// <summary>
         /// Draw gizmos for the machine builder (for debug purposes)
         /// </summary>
         private void OnDrawGizmos()
         {
+            if (!showDebugGizmos)
+            {
+                return;
+            }
             cam = cam ?? Camera.main;
             var (resultIndex, hasSelectedAnchorPoint) = TrySelectPartOfAssembly();
 

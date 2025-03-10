@@ -4,6 +4,7 @@
         <engine:Button text="Load" name="load_button" style="width: 50px;" />
         <engine:Button text="Save" name="save_button" style="width: 50px;" />
         <engine:Button text="Clear" name="clear_button" tooltip="Clear the hole assembly" style="width: 50px;" />
+        <engine:Button text="Help" name="info_button" tooltip="Opens a prompt for some info." style="width: 50px;" />
     </engine:VisualElement>
     <engine:Label text="Label" name="file_name" style="width: 158px; border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 5%; min-width: 10px; min-height: 10px;" />
     <engine:VisualElement style="flex-grow: 1; flex-direction: row; min-height: auto; background-color: rgba(0, 0, 0, 0); align-content: stretch; justify-content: space-between; align-items: flex-end; flex-wrap: nowrap;">
